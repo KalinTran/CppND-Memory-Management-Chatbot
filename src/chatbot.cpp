@@ -8,16 +8,13 @@
 #include "graphedge.h"
 #include "chatbot.h"
 
-// constructor WITHOUT memory allocation
 ChatBot::ChatBot()
 {
-    // invalidate data handles
     _image = nullptr;
     _chatLogic = nullptr;
     _rootNode = nullptr;
 }
 
-// constructor WITH memory allocation
 ChatBot::ChatBot(std::string filename)
 {
     std::cout << "ChatBot Constructor" << std::endl;
@@ -42,8 +39,6 @@ ChatBot::~ChatBot()
     }
 }
 
-//// STUDENT CODE
-////
 ChatBot::ChatBot(const ChatBot& node)
 {
     std::cout <<"ChatBot Copy Constructor\n";
@@ -103,8 +98,6 @@ ChatBot& ChatBot::operator=(ChatBot&& node)
     node._currentNode = nullptr;
     return *this;
 }
-////
-//// EOF STUDENT CODE
 
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
@@ -118,7 +111,7 @@ void ChatBot::ReceiveMessageFromUser(std::string message)
         for (auto keyword : edge->GetKeywords())
         {
             EdgeDist ed{edge, ComputeLevenshteinDistance(keyword, message)};
-            levDists.push_back(ed);
+            levDists.emplace_back(ed);
         }
     }
 

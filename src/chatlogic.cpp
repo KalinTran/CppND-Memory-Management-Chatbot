@@ -14,21 +14,10 @@
 
 ChatLogic::ChatLogic()
 {
-    //// STUDENT CODE
-    ////
-
-    ////
-    //// EOF STUDENT CODE
 }
 
 ChatLogic::~ChatLogic()
 {
-    //// STUDENT CODE
-    ////
-
-
-    ////
-    //// EOF STUDENT CODE
 }
 
 template <typename T>
@@ -82,7 +71,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                     std::string tokenInfo = tokenStr.substr(posTokenInfo + 1, tokenStr.size() - 1);
 
                     // add token to vector
-                    tokens.push_back(std::make_pair(tokenType, tokenInfo));
+                    tokens.emplace_back(std::make_pair(tokenType, tokenInfo));
                 }
 
                 // remove token from current line
